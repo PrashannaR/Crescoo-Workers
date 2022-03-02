@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1035529561344",
+    "project_id": "crescoo-53eff",
+    "storage_bucket": "crescoo-53eff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035529561344:android:d6672443bd1baff8cf3fe5",
+        "android_client_info": {
+          "package_name": "com.example.crescooworkers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035529561344-6d2vildcgm1iguk92tffp3n93m62e8tv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.crescooworkers",
+            "certificate_hash": "90172915f7289f450c68711650d043b967f43a3d"
+          }
+        },
+        {
+          "client_id": "1035529561344-b3ejbsb74ki3d99ocnku5elq82s9ispc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb68K3F-XE9dEZbkd-53WW-UC3NsF4nbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035529561344-b3ejbsb74ki3d99ocnku5elq82s9ispc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
