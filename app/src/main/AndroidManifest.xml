@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CrescooWorkers">
         <activity
+            android:name=".Signup.SignUpOTP"
+            android:exported="false" />
+        <activity
+            android:name=".Signup.SignUpTwo"
+            android:exported="false" />
+        <activity
+            android:name=".Signup.SignUpOne"
+            android:exported="false" />
+        <activity
+            android:name=".Login.LoginOTP"
+            android:exported="false" />
+        <activity
+            android:name=".Login.LoginPhone"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
