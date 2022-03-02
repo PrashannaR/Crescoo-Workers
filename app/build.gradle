@@ -42,5 +42,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'
 
+    //country code picker
+    implementation 'com.hbb20:ccp:2.6.0'
+
 
 }
