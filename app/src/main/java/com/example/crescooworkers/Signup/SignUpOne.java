@@ -1,6 +1,7 @@
 package com.example.crescooworkers.Signup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,15 +23,21 @@ public class SignUpOne extends AppCompatActivity {
     TextView tapLogin;
     Button btnNext;
 
+    public String selectedItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_one);
 
         nameInputLayout = findViewById(R.id.nameInputLayout);
+
         menu = findViewById(R.id.menu);
         dropdown_menu = findViewById(R.id.dropdown_menu);
+
         tapLogin = findViewById(R.id.tapLogin);
+
         btnNext = findViewById(R.id.btnNext);
 
         //drop down menu items
@@ -42,10 +49,18 @@ public class SignUpOne extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if(!checkName()){
+                    return;
+                }
+
                 String name = nameInputLayout.getEditText().getText().toString();
-                Toast.makeText(SignUpOne.this, name, Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(getApplicationContext(), SignUpTwo.class);
+
+                //send values to different Activity
                 intent.putExtra("name", name);
+                intent.putExtra("selectedItem", selectedItem);
+
                 startActivity(intent);
 
             }
@@ -59,14 +74,26 @@ public class SignUpOne extends AppCompatActivity {
             }
         });
 
+
         dropdown_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                 String selectedItem = itemAdapter.getItem(i);
-                Toast.makeText(SignUpOne.this, selectedItem, Toast.LENGTH_SHORT).show();
+                selectedItem = itemAdapter.getItem(i);
             }
         });
 
 
+    }
+
+    private boolean checkName() {
+        String name = nameInputLayout.getEditText().getText().toString();
+
+        if(name.isEmpty()){
+            nameInputLayout.setError("Enter Your Name");
+            return false;
+        }else {
+            nameInputLayout.setError(null);
+            return true;
+        }
     }
 }

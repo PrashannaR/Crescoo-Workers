@@ -9,4 +9,9 @@
     <string name="occupation">Occupation</string>
     <string name="sample">Sample</string>
     <string name="noLogin">Already Signed up? Tap here to Login</string>
+    <string name="moreDet">More Details About You</string>
+    <string name="years_of_experience">Years Of Experience</string>
+    <string name="per_hour">Per Hour</string>
+    <string name="your_pay_info">Your Pay Info</string>
+    <string name="per_day">Per Day</string>
 </resources>
