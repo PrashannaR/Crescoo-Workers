@@ -51,27 +51,33 @@
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/menu"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:padding="20dp"
-            app:boxStrokeColor="@color/darkGrey"
-            android:background="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/nameInputLayout"
-            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/phoneInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/phone_number"
+            android:textColorHint="@color/grey"
+            app:boxStrokeColor="@color/grey"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            android:hint="@string/occupation">
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameInputLayout">
 
-            <AutoCompleteTextView
-                android:id="@+id/dropdown_menu"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneEditText"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                />
-
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <TextView
             android:id="@+id/tapLogin"
@@ -82,7 +88,7 @@
             android:textColor="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu" />
+            app:layout_constraintTop_toBottomOf="@+id/phoneInputLayout" />
 
         <Button
             android:id="@+id/btnNext"

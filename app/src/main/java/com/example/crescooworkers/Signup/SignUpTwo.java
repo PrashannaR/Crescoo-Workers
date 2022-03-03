@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,16 +16,20 @@ import android.widget.Toast;
 import com.example.crescooworkers.Login.LoginPhone;
 import com.example.crescooworkers.R;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpTwo extends AppCompatActivity {
 
-    TextInputLayout yearInputLayout, phoneInputLayout, hourInputLayout, dayInputLayout;
+    TextInputLayout yearInputLayout, phoneInputLayout, hourInputLayout, dayInputLayout, menu;
+    AutoCompleteTextView dropdown_menu;
     TextView tapLogin;
     Button btnNext;
 
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
 
-
-    public String years, phone, hour, day;
+    public String years, hour, day, selectedItem;
 
 
     @Override
@@ -36,6 +43,9 @@ public class SignUpTwo extends AppCompatActivity {
         hourInputLayout = findViewById(R.id.hourInputLayout);
         dayInputLayout = findViewById(R.id.dayInputLayout);
 
+        menu = findViewById(R.id.menu);
+        dropdown_menu = findViewById(R.id.dropdown_menu);
+
         tapLogin = findViewById(R.id.tapLogin);
 
         btnNext = findViewById(R.id.btnNext);
@@ -43,7 +53,12 @@ public class SignUpTwo extends AppCompatActivity {
         //get Values from last Activity
         Intent intent = getIntent();
         String uName = intent.getStringExtra("name");
-        String item = intent.getStringExtra("selectedItem");
+        String uPhone = intent.getStringExtra("phone");
+
+        //drop down menu items
+        String[] items = {"Item1", "Item2", "Item69"};
+        ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(SignUpTwo.this, R.layout.drop_down_list,items);
+        dropdown_menu.setAdapter(itemAdapter);
 
 
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -51,17 +66,29 @@ public class SignUpTwo extends AppCompatActivity {
             public void onClick(View view) {
 
                 //input validations
-                if(!checkYears()||!checkPhone()||!checkHour()||!checkDay()){
+                if(!checkYears()||!checkHour()||!checkDay()){
                     return;
                 }
 
 
                 //get Values from EditTexts
                years = yearInputLayout.getEditText().getText().toString();
-               phone = phoneInputLayout.getEditText().getText().toString();
                hour = hourInputLayout.getEditText().getText().toString();
                day = dayInputLayout.getEditText().getText().toString();
 
+               //database
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("workers");
+
+
+            }
+        });
+
+
+        dropdown_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedItem = itemAdapter.getItem(i);
             }
         });
 
@@ -81,17 +108,7 @@ public class SignUpTwo extends AppCompatActivity {
         }
     }
 
-    private boolean checkPhone() {
-        phone = phoneInputLayout.getEditText().getText().toString();
 
-        if(phone.isEmpty()){
-            phoneInputLayout.setError("Enter Your Phone Number");
-            return false;
-        }else {
-            phoneInputLayout.setError(null);
-            return true;
-        }
-    }
 
     private boolean checkHour() {
         hour = hourInputLayout.getEditText().getText().toString();

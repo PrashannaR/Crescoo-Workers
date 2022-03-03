@@ -18,12 +18,12 @@ import com.example.crescooworkers.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class SignUpOne extends AppCompatActivity {
-    TextInputLayout nameInputLayout, menu;
-    AutoCompleteTextView dropdown_menu;
+    TextInputLayout nameInputLayout,phoneInputLayout;
+
     TextView tapLogin;
     Button btnNext;
 
-    public String selectedItem;
+    public String phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,34 +32,33 @@ public class SignUpOne extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_one);
 
         nameInputLayout = findViewById(R.id.nameInputLayout);
+        phoneInputLayout = findViewById(R.id.phoneInputLayout);
 
-        menu = findViewById(R.id.menu);
-        dropdown_menu = findViewById(R.id.dropdown_menu);
+
 
         tapLogin = findViewById(R.id.tapLogin);
 
         btnNext = findViewById(R.id.btnNext);
 
-        //drop down menu items
-        String[] items = {"Item1", "Item2", "Item69"};
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(SignUpOne.this, R.layout.drop_down_list,items);
-        dropdown_menu.setAdapter(itemAdapter);
+
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(!checkName()){
+                if(!checkName() ||!checkPhone()){
                     return;
                 }
 
                 String name = nameInputLayout.getEditText().getText().toString();
+                phone = phoneInputLayout.getEditText().getText().toString();
 
                 Intent intent = new Intent(getApplicationContext(), SignUpTwo.class);
 
                 //send values to different Activity
                 intent.putExtra("name", name);
-                intent.putExtra("selectedItem", selectedItem);
+                intent.putExtra("phone", phone);
+
 
                 startActivity(intent);
 
@@ -75,12 +74,6 @@ public class SignUpOne extends AppCompatActivity {
         });
 
 
-        dropdown_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedItem = itemAdapter.getItem(i);
-            }
-        });
 
 
     }
@@ -93,6 +86,18 @@ public class SignUpOne extends AppCompatActivity {
             return false;
         }else {
             nameInputLayout.setError(null);
+            return true;
+        }
+    }
+
+    private boolean checkPhone() {
+        phone = phoneInputLayout.getEditText().getText().toString();
+
+        if(phone.isEmpty()){
+            phoneInputLayout.setError("Enter Your Phone Number");
+            return false;
+        }else {
+            phoneInputLayout.setError(null);
             return true;
         }
     }
