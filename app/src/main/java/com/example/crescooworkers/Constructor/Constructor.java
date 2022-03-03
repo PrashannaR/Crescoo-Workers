@@ -3,6 +3,11 @@ package com.example.crescooworkers.Constructor;
 public class Constructor {
     String name, occupation, yearsOfExp, phone, pHour, pDay;
 
+    //empty constructor
+    public Constructor(){
+
+    }
+
     public Constructor(String name, String occupation, String yearsOfExp, String phone, String pHour, String pDay) {
         this.name = name;
         this.occupation = occupation;

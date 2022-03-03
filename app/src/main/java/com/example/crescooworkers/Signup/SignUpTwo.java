@@ -13,9 +13,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.crescooworkers.Activities.Home;
+import com.example.crescooworkers.Constructor.Constructor;
 import com.example.crescooworkers.Login.LoginPhone;
 import com.example.crescooworkers.R;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,10 +29,11 @@ public class SignUpTwo extends AppCompatActivity {
     TextView tapLogin;
     Button btnNext;
 
+    FirebaseAuth auth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
-    public String years, hour, day, selectedItem;
+    public String years, hour, day, selectedItem, name, phone;
 
 
     @Override
@@ -50,10 +54,19 @@ public class SignUpTwo extends AppCompatActivity {
 
         btnNext = findViewById(R.id.btnNext);
 
-        //get Values from last Activity
-        Intent intent = getIntent();
-        String uName = intent.getStringExtra("name");
-        String uPhone = intent.getStringExtra("phone");
+        //firebase
+        auth = FirebaseAuth.getInstance();
+        rootNode = FirebaseDatabase.getInstance();
+
+        //getValues
+
+        Intent otpIntent = getIntent();
+        name = otpIntent.getStringExtra("name");
+        phone = otpIntent.getStringExtra("phone");
+
+
+
+
 
         //drop down menu items
         String[] items = {"Item1", "Item2", "Item69"};
@@ -77,8 +90,14 @@ public class SignUpTwo extends AppCompatActivity {
                day = dayInputLayout.getEditText().getText().toString();
 
                //database
-                rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("workers");
+
+                Constructor constructor = new Constructor(name, selectedItem, years, phone, hour, day);
+                reference.child(phone).setValue(constructor);
+
+                Intent intent = new Intent(SignUpTwo.this, Home.class);
+                startActivity(intent);
+                finish();
 
 
             }

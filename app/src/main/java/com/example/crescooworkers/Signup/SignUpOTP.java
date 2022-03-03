@@ -87,7 +87,12 @@ public class SignUpOTP extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(SignUpOTP.this, "Logged In", Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(SignUpOTP.this, "Logged In", Toast.LENGTH_SHORT).show();
+                            Intent otpIntent = new Intent(SignUpOTP.this, SignUpTwo.class);
+                            otpIntent.putExtra("name", uName);
+                            otpIntent.putExtra("phone", uPhone);
+                            startActivity(otpIntent);
+                            finishAffinity();
                         }else {
                             Toast.makeText(SignUpOTP.this, "Failed", Toast.LENGTH_SHORT).show();
                         }
