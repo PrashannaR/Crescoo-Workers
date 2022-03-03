@@ -96,6 +96,7 @@ public class SignUpTwo extends AppCompatActivity {
                 reference.child(phone).setValue(constructor);
 
                 Intent intent = new Intent(SignUpTwo.this, Home.class);
+                intent.putExtra("phone", phone);
                 startActivity(intent);
                 finish();
 

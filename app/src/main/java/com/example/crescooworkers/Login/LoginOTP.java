@@ -41,7 +41,10 @@ public class LoginOTP extends AppCompatActivity {
     FirebaseAuth auth;
     DatabaseReference databaseReference;
 
-    String uPhone, verificationID;
+    public String uPhone;
+    String verificationID;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,7 @@ public class LoginOTP extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
                                     Intent intent = new Intent(LoginOTP.this, Home.class);
+                                    intent.putExtra("phone", uPhone);
                                     startActivity(intent);
                                     finishAffinity();
                                 }else {
@@ -124,6 +128,9 @@ public class LoginOTP extends AppCompatActivity {
 
     }
 
+
+
+
     private void sendOTP() {
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(auth)
                 .setPhoneNumber(uPhone)
@@ -159,6 +166,7 @@ public class LoginOTP extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Intent intent = new Intent(LoginOTP.this, Home.class);
+                            intent.putExtra("phone", uPhone);
                             startActivity(intent);
                             finishAffinity();
                         }else {

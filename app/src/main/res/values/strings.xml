@@ -16,4 +16,13 @@
     <string name="per_day">Per Day</string>
     <string name="enter_your_otp_here">Enter Your OTP Here</string>
     <string name="resendOTP">Did not get an OTP yet? Tap here to resend.</string>
+    <string name="home">Home</string>
+    <string name="username">UserName</string>
+    <string name="sampleNumber">+97798xxxxxxxx</string>
+    <string name="samplePerDay">Per Day:</string>
+    <string name="sampleYear">4</string>
+    <string name="textYears">Years of Experience</string>
+    <string name="per_hour_4_20">Per Hour:</string>
+    <string name="_420">420</string>
+    <string name="_69">69</string>
 </resources>
