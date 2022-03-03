@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.crescooworkers.Login.LoginPhone;
+import com.example.crescooworkers.Signup.SignUpOne;
 
 public class MainActivity extends AppCompatActivity {
     Handler handler = new Handler();
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, LoginPhone.class);
+                Intent intent = new Intent(MainActivity.this, SignUpOne.class);
                 startActivity(intent);
                 finish();
             }

@@ -4,4 +4,9 @@
     <string name="phone_number">Phone Number</string>
     <string name="noSignUp">Not signed up yet? Tap here to Sign Up</string>
     <string name="next">Next</string>
+    <string name="name">Name</string>
+    <string name="signup">SignUp</string>
+    <string name="occupation">Occupation</string>
+    <string name="sample">Sample</string>
+    <string name="noLogin">Already Signed up? Tap here to Login</string>
 </resources>
