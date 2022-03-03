@@ -20,6 +20,8 @@ public class SignUpTwo extends AppCompatActivity {
     TextView tapLogin;
     Button btnNext;
 
+
+
     public String years, phone, hour, day;
 
 
