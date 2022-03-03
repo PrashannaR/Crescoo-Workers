@@ -16,10 +16,11 @@ import android.widget.Toast;
 import com.example.crescooworkers.Login.LoginPhone;
 import com.example.crescooworkers.R;
 import com.google.android.material.textfield.TextInputLayout;
+import com.hbb20.CountryCodePicker;
 
 public class SignUpOne extends AppCompatActivity {
     TextInputLayout nameInputLayout,phoneInputLayout;
-
+    CountryCodePicker ccp;
     TextView tapLogin;
     Button btnNext;
 
@@ -34,7 +35,8 @@ public class SignUpOne extends AppCompatActivity {
         nameInputLayout = findViewById(R.id.nameInputLayout);
         phoneInputLayout = findViewById(R.id.phoneInputLayout);
 
-
+        ccp = findViewById(R.id.ccp);
+        ccp.registerCarrierNumberEditText(phoneInputLayout.getEditText());
 
         tapLogin = findViewById(R.id.tapLogin);
 
@@ -51,14 +53,13 @@ public class SignUpOne extends AppCompatActivity {
                 }
 
                 String name = nameInputLayout.getEditText().getText().toString();
-                phone = phoneInputLayout.getEditText().getText().toString();
+               // phone = phoneInputLayout.getEditText().getText().toString();
 
-                Intent intent = new Intent(getApplicationContext(), SignUpTwo.class);
+                Intent intent = new Intent(getApplicationContext(), SignUpOTP.class);
 
                 //send values to different Activity
                 intent.putExtra("name", name);
-                intent.putExtra("phone", phone);
-
+                intent.putExtra("phone", ccp.getFullNumberWithPlus().replace(" ", ""));
 
                 startActivity(intent);
 
@@ -72,8 +73,6 @@ public class SignUpOne extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
 
 
     }

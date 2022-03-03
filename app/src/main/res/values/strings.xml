@@ -14,4 +14,6 @@
     <string name="per_hour">Per Hour</string>
     <string name="your_pay_info">Your Pay Info</string>
     <string name="per_day">Per Day</string>
+    <string name="enter_your_otp_here">Enter Your OTP Here</string>
+    <string name="resendOTP">Did not get an OTP yet? Tap here to resend.</string>
 </resources>

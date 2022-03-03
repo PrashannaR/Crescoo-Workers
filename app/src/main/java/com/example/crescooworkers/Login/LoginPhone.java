@@ -43,7 +43,7 @@ public class LoginPhone extends AppCompatActivity {
                // String phone = phoneInputLayout.getEditText().getText().toString();
                 //Toast.makeText(LoginPhone.this, ccp.getFullNumberWithPlus(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), LoginOTP.class);
-                intent.putExtra("phoneNumber", ccp.getFullNumberWithPlus().replace("",""));
+                intent.putExtra("phoneNumber", ccp.getFullNumberWithPlus().replace(" ",""));
                 startActivity(intent);
             }
         });
