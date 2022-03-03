@@ -43,7 +43,6 @@ public class SignUpOne extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
 
 
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,8 +52,6 @@ public class SignUpOne extends AppCompatActivity {
                 }
 
                 String name = nameInputLayout.getEditText().getText().toString();
-               // phone = phoneInputLayout.getEditText().getText().toString();
-
                 Intent intent = new Intent(getApplicationContext(), SignUpOTP.class);
 
                 //send values to different Activity

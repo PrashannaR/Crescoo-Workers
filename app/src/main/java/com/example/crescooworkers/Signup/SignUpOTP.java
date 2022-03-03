@@ -53,6 +53,7 @@ public class SignUpOTP extends AppCompatActivity {
          uName = intent.getStringExtra("name");
          uPhone = intent.getStringExtra("phone");
 
+         //get OTP
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(auth)
                 .setPhoneNumber(uPhone)
                 .setTimeout(60L, TimeUnit.SECONDS)
@@ -129,6 +130,7 @@ public class SignUpOTP extends AppCompatActivity {
             }
         });
 
+        //resend OTP
         resendOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
