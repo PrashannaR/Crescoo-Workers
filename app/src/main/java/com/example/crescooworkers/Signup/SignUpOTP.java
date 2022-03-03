@@ -101,6 +101,34 @@ public class SignUpOTP extends AppCompatActivity {
             }
         });
 
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                otpView.setOtpCompletionListener(new OnOtpCompletionListener() {
+                    @Override
+                    public void onOtpCompleted(String otp) {
+                        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationID, otp);
+
+                        auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()){
+                                    // Toast.makeText(SignUpOTP.this, "Logged In", Toast.LENGTH_SHORT).show();
+                                    Intent otpIntent = new Intent(SignUpOTP.this, SignUpTwo.class);
+                                    otpIntent.putExtra("name", uName);
+                                    otpIntent.putExtra("phone", uPhone);
+                                    startActivity(otpIntent);
+                                    finishAffinity();
+                                }else {
+                                    Toast.makeText(SignUpOTP.this, "Failed", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
         resendOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
