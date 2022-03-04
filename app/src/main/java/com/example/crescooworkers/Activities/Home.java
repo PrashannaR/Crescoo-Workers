@@ -27,7 +27,7 @@ public class Home extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getValuesFromDB();
+
 
         Intent intent = getIntent();
          phone = intent.getStringExtra("phone");
@@ -43,7 +43,7 @@ public class Home extends AppCompatActivity {
         perHourTV = findViewById(R.id.perHourTV);
         yearsTV = findViewById(R.id.yearsTV);
 
-
+        getValuesFromDB();
 
     }
 
