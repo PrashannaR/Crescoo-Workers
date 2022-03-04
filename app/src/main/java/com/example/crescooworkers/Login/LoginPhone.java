@@ -69,7 +69,7 @@ public class LoginPhone extends AppCompatActivity {
                             intent.putExtra("phoneNumber", ccp.getFullNumberWithPlus().replace(" ",""));
                             startActivity(intent);
                         }else {
-                            Toast.makeText(LoginPhone.this, "The given number has not registered yet.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginPhone.this, "The given number has not been registered yet.", Toast.LENGTH_SHORT).show();
                         }
                     }
 

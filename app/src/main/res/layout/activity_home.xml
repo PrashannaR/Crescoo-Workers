@@ -7,6 +7,7 @@
     tools:context=".Activities.Home">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
@@ -25,9 +26,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/occupation"
                 android:textColor="@color/darkGrey"
-                android:layout_marginTop="16dp"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/nameTV" />
@@ -62,8 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="68dp"
-                android:textColor="@color/darkGrey"
                 android:text="@string/samplePerDay"
+                android:textColor="@color/darkGrey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phoneTV" />
 
@@ -75,8 +76,8 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/sampleYear"
                 android:textColor="@color/black"
-                android:textStyle="bold"
                 android:textSize="40sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/occupationTV" />
 
@@ -86,8 +87,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
-                android:textColor="@color/darkGrey"
                 android:text="@string/textYears"
+                android:textColor="@color/darkGrey"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/yearsTV"
                 app:layout_constraintTop_toBottomOf="@+id/occupationTV"
@@ -110,8 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
-                android:textColor="@color/darkGrey"
                 android:text="@string/_420"
+                android:textColor="@color/darkGrey"
                 app:layout_constraintStart_toEndOf="@+id/perDayT"
                 app:layout_constraintTop_toBottomOf="@+id/phoneTV" />
 
@@ -144,6 +145,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Logout"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.475" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

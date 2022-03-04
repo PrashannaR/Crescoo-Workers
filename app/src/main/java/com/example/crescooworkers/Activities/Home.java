@@ -7,11 +7,15 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.crescooworkers.R;
+import com.example.crescooworkers.Signup.SignUpOne;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Home extends AppCompatActivity {
 
     TextView nameTV, occupationTV, phoneTV, perDayTV, perHourTV, yearsTV;
+    Button btnLogout;
 
     DatabaseReference databaseReference;
     public String phone;
@@ -32,11 +37,11 @@ public class Home extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-         phone = intent.getStringExtra("phone");
+        phone = intent.getStringExtra("phone");
 
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://crescoo-53eff-default-rtdb.firebaseio.com/");
 
-
+        btnLogout = findViewById(R.id.btnLogout);
 
         nameTV = findViewById(R.id.nameTV);
         occupationTV = findViewById(R.id.occupationTV);
@@ -46,6 +51,15 @@ public class Home extends AppCompatActivity {
         yearsTV = findViewById(R.id.yearsTV);
 
         getValuesFromDB();
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent1 = new Intent(Home.this, SignUpOne.class);
+                startActivity(intent1);
+                finish();
+            }
+        });
 
     }
 
