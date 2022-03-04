@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -33,6 +34,8 @@ public class SignUpOTP extends AppCompatActivity {
 
     FirebaseAuth auth;
     public String uName, uPhone, verificationID;
+
+    String tag = "SignUpOTP";
 
 
     @Override
@@ -160,5 +163,45 @@ public class SignUpOTP extends AppCompatActivity {
                 PhoneAuthProvider.verifyPhoneNumber(options);
             }
         });
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(tag, "onPause");
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(tag, "onStart");
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(tag, "onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(tag, "onRestart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(tag, "onStop");
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(tag, "onDestroy");
     }
 }
