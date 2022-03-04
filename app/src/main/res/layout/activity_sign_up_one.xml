@@ -46,7 +46,7 @@
                 android:id="@+id/nameEditText"
                 android:layout_width="250dp"
                 android:singleLine="true"
-                android:nextFocusForward="@id/menu"
+                android:nextFocusForward="@id/phoneInputLayout"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
