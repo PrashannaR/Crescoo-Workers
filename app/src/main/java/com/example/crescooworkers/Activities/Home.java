@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Home extends AppCompatActivity {
 
-    TextView nameTV, occupationTV, phoneTV, perDayTV, perHourTV, yearsTV;
+    TextView nameTV, occupationTV, phoneTV, perDayTV, perHourTV, yearsTV, ageTV, genderTV;
     Button btnLogout;
 
     DatabaseReference databaseReference;
@@ -49,6 +49,8 @@ public class Home extends AppCompatActivity {
         perDayTV = findViewById(R.id.perDayTV);
         perHourTV = findViewById(R.id.perHourTV);
         yearsTV = findViewById(R.id.yearsTV);
+        ageTV = findViewById(R.id.ageTV);
+        genderTV = findViewById(R.id.genderTV);
 
         getValuesFromDB();
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +79,8 @@ public class Home extends AppCompatActivity {
                         String pHour = String.valueOf(dataSnapshot.child("pHour").getValue());
                         String phone = String.valueOf(dataSnapshot.child("phone").getValue());
                         String years = String.valueOf(dataSnapshot.child("yearsOfExp").getValue());
+                        String age = String.valueOf(dataSnapshot.child("age").getValue());
+                        String gender = String.valueOf(dataSnapshot.child("gender").getValue());
 
                         nameTV.setText(name);
                         occupationTV.setText(occupation);
@@ -84,6 +88,8 @@ public class Home extends AppCompatActivity {
                         perDayTV.setText(pDay);
                         perHourTV.setText(pHour);
                         yearsTV.setText(years);
+                        ageTV.setText(age);
+                        genderTV.setText(gender);
                     }
                 }
             }

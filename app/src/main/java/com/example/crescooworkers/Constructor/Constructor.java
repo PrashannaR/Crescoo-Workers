@@ -1,20 +1,22 @@
 package com.example.crescooworkers.Constructor;
 
 public class Constructor {
-    String name, occupation, yearsOfExp, phone, pHour, pDay;
+    String name, occupation, yearsOfExp, phone, pHour, pDay, age, gender;
 
     //empty constructor
     public Constructor(){
 
     }
 
-    public Constructor(String name, String occupation, String yearsOfExp, String phone, String pHour, String pDay) {
+    public Constructor(String name, String occupation, String yearsOfExp, String phone, String pHour, String pDay, String age, String gender) {
         this.name = name;
         this.occupation = occupation;
         this.yearsOfExp = yearsOfExp;
         this.phone = phone;
         this.pHour = pHour;
         this.pDay = pDay;
+        this.age = age;
+        this.gender = gender;
     }
 
     public String getName() {
@@ -63,5 +65,21 @@ public class Constructor {
 
     public void setpDay(String pDay) {
         this.pDay = pDay;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.crescooworkers.Activities.Home;
+import com.example.crescooworkers.Constructor.Constructor;
 import com.example.crescooworkers.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.hbb20.CountryCodePicker;
 import com.mukesh.OnOtpCompletionListener;
 import com.mukesh.OtpView;
@@ -33,7 +37,10 @@ public class SignUpOTP extends AppCompatActivity {
     TextView resendOTP;
 
     FirebaseAuth auth;
-    public String uName, uPhone, verificationID;
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
+
+    public String name, phone, gender, age, year, hour, day, selectedItem, verificationID;
 
     String tag = "SignUpOTP";
 
@@ -48,17 +55,27 @@ public class SignUpOTP extends AppCompatActivity {
         otpView = findViewById(R.id.otp_view);
         resendOTP = findViewById(R.id.resendOTP);
 
+        //firebase
         auth = FirebaseAuth.getInstance();
+        rootNode = FirebaseDatabase.getInstance();
 
 
         //get values from last intent
         Intent intent = getIntent();
-         uName = intent.getStringExtra("name");
-         uPhone = intent.getStringExtra("phone");
+        name = intent.getStringExtra("name");
+        phone = intent.getStringExtra("phone");
+        gender = intent.getStringExtra("gender");
+        age = intent.getStringExtra("age");
+        year = intent.getStringExtra("years");
+        hour = intent.getStringExtra("hour");
+        day = intent.getStringExtra("day");
+        selectedItem = intent.getStringExtra("selectedItem");
+
+
 
          //get OTP
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(auth)
-                .setPhoneNumber(uPhone)
+                .setPhoneNumber(phone)
                 .setTimeout(60L, TimeUnit.SECONDS)
                 .setActivity(SignUpOTP.this)
                 .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -91,11 +108,12 @@ public class SignUpOTP extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                           // Toast.makeText(SignUpOTP.this, "Logged In", Toast.LENGTH_SHORT).show();
-                            Intent otpIntent = new Intent(SignUpOTP.this, SignUpTwo.class);
-                            otpIntent.putExtra("name", uName);
-                            otpIntent.putExtra("phone", uPhone);
-                            startActivity(otpIntent);
+                            sendData();
+
+                            Intent intent = new Intent(SignUpOTP.this, Home.class);
+                           // intent.putExtra("name", name);
+                            intent.putExtra("phone", phone);
+                            startActivity(intent);
                             finishAffinity();
                         }else {
                             Toast.makeText(SignUpOTP.this, "Failed", Toast.LENGTH_SHORT).show();
@@ -117,11 +135,11 @@ public class SignUpOTP extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()){
-                                    // Toast.makeText(SignUpOTP.this, "Logged In", Toast.LENGTH_SHORT).show();
-                                    Intent otpIntent = new Intent(SignUpOTP.this, SignUpTwo.class);
-                                    otpIntent.putExtra("name", uName);
-                                    otpIntent.putExtra("phone", uPhone);
-                                    startActivity(otpIntent);
+                                    sendData();
+                                    Intent intent = new Intent(SignUpOTP.this, Home.class);
+                                    //intent.putExtra("name", name);
+                                    intent.putExtra("phone", phone);
+                                    startActivity(intent);
                                     finishAffinity();
                                 }else {
                                     Toast.makeText(SignUpOTP.this, "Failed", Toast.LENGTH_SHORT).show();
@@ -138,7 +156,7 @@ public class SignUpOTP extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PhoneAuthOptions options = PhoneAuthOptions.newBuilder(auth)
-                        .setPhoneNumber(uPhone)
+                        .setPhoneNumber(phone)
                         .setTimeout(60L, TimeUnit.SECONDS)
                         .setActivity(SignUpOTP.this)
                         .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -163,6 +181,14 @@ public class SignUpOTP extends AppCompatActivity {
                 PhoneAuthProvider.verifyPhoneNumber(options);
             }
         });
+    }
+
+    private void sendData() {
+        reference = rootNode.getReference("workers");
+
+        Constructor constructor = new Constructor(name, selectedItem, year, phone, hour, day, age, gender);
+        reference.child(phone).setValue(constructor);
+
     }
 
 

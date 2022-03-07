@@ -34,7 +34,7 @@ public class SignUpTwo extends AppCompatActivity {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
-    public String years, hour, day, selectedItem, name, phone;
+    public String years, hour, day, selectedItem, name, phone, gender, age;
 
     String tag = "SignUp Two";
 
@@ -62,17 +62,16 @@ public class SignUpTwo extends AppCompatActivity {
         rootNode = FirebaseDatabase.getInstance();
 
         //getValues
-
-        Intent otpIntent = getIntent();
-        name = otpIntent.getStringExtra("name");
-        phone = otpIntent.getStringExtra("phone");
-
-
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+        phone = intent.getStringExtra("phone");
+        gender = intent.getStringExtra("gender");
+        age = intent.getStringExtra("age");
 
 
 
         //drop down menu items
-        String[] items = {"Item1", "Item2", "Item69"};
+        String[] items = {"Carpentry", "Cleaning", "Blacksmith", "Plumbing", "Electrical", "Interiors", "Movers"};
         ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(SignUpTwo.this, R.layout.drop_down_list,items);
         dropdown_menu.setAdapter(itemAdapter);
 
@@ -92,16 +91,27 @@ public class SignUpTwo extends AppCompatActivity {
                hour = hourInputLayout.getEditText().getText().toString();
                day = dayInputLayout.getEditText().getText().toString();
 
-               //database
-                reference = rootNode.getReference("workers");
+               Intent intent = new Intent(SignUpTwo.this, SignUpOTP.class);
+               intent.putExtra("name", name);
+               intent.putExtra("phone", phone);
+               intent.putExtra("gender", gender);
+               intent.putExtra("age", age);
+               intent.putExtra("years", years);
+               intent.putExtra("selectedItem", selectedItem);
+               intent.putExtra("hour", hour);
+               intent.putExtra("day", day);
+               startActivity(intent);
 
-                Constructor constructor = new Constructor(name, selectedItem, years, phone, hour, day);
-                reference.child(phone).setValue(constructor);
-
-                Intent intent = new Intent(SignUpTwo.this, Home.class);
-                intent.putExtra("phone", phone);
-                startActivity(intent);
-                finish();
+//               //database
+//                reference = rootNode.getReference("workers");
+//
+//                Constructor constructor = new Constructor(name, selectedItem, years, phone, hour, day);
+//                reference.child(phone).setValue(constructor);
+//
+//                Intent intent = new Intent(SignUpTwo.this, Home.class);
+//                intent.putExtra("phone", phone);
+//                startActivity(intent);
+//                finish();
 
 
             }

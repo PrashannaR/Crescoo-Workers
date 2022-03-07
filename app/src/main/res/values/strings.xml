@@ -25,4 +25,8 @@
     <string name="per_hour_4_20">Per Hour:</string>
     <string name="_420">420</string>
     <string name="_69">69</string>
+    <string name="gender">Gender</string>
+    <string name="age">Age</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="sampleAge">20</string>
 </resources>

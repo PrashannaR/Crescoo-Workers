@@ -20,7 +20,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.hbb20.CountryCodePicker;
 
 public class SignUpOne extends AppCompatActivity {
-    TextInputLayout nameInputLayout,phoneInputLayout;
+    TextInputLayout nameInputLayout,phoneInputLayout, genderInputLayout, ageInputLayout;
     CountryCodePicker ccp;
     TextView tapLogin;
     Button btnNext;
@@ -37,6 +37,8 @@ public class SignUpOne extends AppCompatActivity {
 
         nameInputLayout = findViewById(R.id.nameInputLayout);
         phoneInputLayout = findViewById(R.id.phoneInputLayout);
+        genderInputLayout = findViewById(R.id.genderInputLayout);
+        ageInputLayout = findViewById(R.id.ageInputLayout);
 
         ccp = findViewById(R.id.ccp);
         ccp.registerCarrierNumberEditText(phoneInputLayout.getEditText());
@@ -50,16 +52,20 @@ public class SignUpOne extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(!checkName() ||!checkPhone()){
+                if(!checkName() ||!checkPhone() || !checkGender() || !checkAge()){
                     return;
                 }
 
                 String name = nameInputLayout.getEditText().getText().toString();
-                Intent intent = new Intent(getApplicationContext(), SignUpOTP.class);
+                String gender = genderInputLayout.getEditText().getText().toString();
+                String age = ageInputLayout.getEditText().getText().toString();
+                Intent intent = new Intent(getApplicationContext(), SignUpTwo.class);
 
                 //send values to different Activity
                 intent.putExtra("name", name);
                 intent.putExtra("phone", ccp.getFullNumberWithPlus().replace(" ", ""));
+                intent.putExtra("gender", gender);
+                intent.putExtra("age", age);
 
                 startActivity(intent);
 
@@ -101,6 +107,29 @@ public class SignUpOne extends AppCompatActivity {
         }
     }
 
+    private boolean checkGender() {
+        String gender = genderInputLayout.getEditText().getText().toString();
+
+        if(gender.isEmpty()){
+            genderInputLayout.setError("Enter Your Phone Number");
+            return false;
+        }else {
+            genderInputLayout.setError(null);
+            return true;
+        }
+    }
+
+    private boolean checkAge() {
+        String age = ageInputLayout.getEditText().getText().toString();
+
+        if(age.isEmpty()){
+            ageInputLayout.setError("Enter Your Phone Number");
+            return false;
+        }else {
+            ageInputLayout.setError(null);
+            return true;
+        }
+    }
 
     @Override
     protected void onPause() {

@@ -12,16 +12,20 @@
         android:background="@color/white"
         tools:context=".Signup.SignUpOne">
 
+
         <TextView
             android:id="@+id/SignUpTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="236dp"
+            android:layout_marginTop="168dp"
+            android:fontFamily="@font/poppins"
             android:text="@string/signup"
-            android:textSize="25sp"
             android:textColor="@color/black"
+            android:textSize="25sp"
             android:textStyle="bold"
+
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,15 +43,16 @@
             app:endIconMode="clear_text"
             app:endIconTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.614"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SignUpTV">
+            app:layout_constraintTop_toBottomOf="@id/phoneInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nameEditText"
                 android:layout_width="250dp"
-                android:singleLine="true"
-                android:nextFocusForward="@id/phoneInputLayout"
                 android:layout_height="wrap_content"
+                android:nextFocusForward="@id/genderInputLayout"
+                android:singleLine="true"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,35 +60,90 @@
             android:id="@+id/ccp"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="28dp"
             app:layout_constraintEnd_toStartOf="@+id/phoneInputLayout"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameInputLayout" />
-
+            app:layout_constraintTop_toBottomOf="@+id/SignUpTV" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/phoneInputLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:hint="@string/phone_number"
             android:textColorHint="@color/grey"
             app:boxStrokeColor="@color/grey"
             app:endIconMode="clear_text"
             app:endIconTint="@color/black"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.62"
+            app:layout_constraintHorizontal_bias="0.706"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nameInputLayout">
+            app:layout_constraintTop_toBottomOf="@id/SignUpTV">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/phoneEditText"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
+                android:nextFocusForward="@id/nameInputLayout"
                 android:inputType="number"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/genderInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/gender"
+            android:textColorHint="@color/grey"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxStrokeColor="@color/grey"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.614"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/genderEditText"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:nextFocusForward="@id/ageInputLayout"
+                android:singleLine="true"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ageInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/age"
+            android:textColorHint="@color/grey"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxStrokeColor="@color/grey"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.614"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/genderInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ageEditText"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,24 +151,26 @@
             android:id="@+id/tapLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins"
             android:text="@string/noLogin"
             android:textColor="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.583"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneInputLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/ageInputLayout" />
 
         <Button
             android:id="@+id/btnNext"
             android:layout_width="150dp"
             android:layout_height="55dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:text="@string/next"
             android:textAllCaps="false"
             android:textSize="20sp"
             app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.865"
+            app:layout_constraintHorizontal_bias="0.559"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tapLogin" />
 
