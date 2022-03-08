@@ -12,11 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.crescooworkers.Activities.Home;
-import com.example.crescooworkers.Constructor.Constructor;
-import com.example.crescooworkers.Login.LoginPhone;
 import com.example.crescooworkers.R;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;

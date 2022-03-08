@@ -13,6 +13,9 @@
             android:name=".Activities.Home"
             android:exported="false" />
         <activity
+            android:name=".Activities.Profiles"
+            android:exported="false" />
+        <activity
             android:name=".Signup.SignUpOTP"
             android:exported="false" />
         <activity

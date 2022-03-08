@@ -1,6 +1,5 @@
 package com.example.crescooworkers;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
@@ -8,18 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.crescooworkers.Activities.Home;
-import com.example.crescooworkers.Login.LoginPhone;
+import com.example.crescooworkers.Activities.Profiles;
 import com.example.crescooworkers.Signup.SignUpOne;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     Handler handler = new Handler();
@@ -49,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(MainActivity.this, Home.class);
+                    Intent intent = new Intent(MainActivity.this, Profiles.class);
                     intent.putExtra("phone", phone);
                     startActivity(intent);
                     finish();

@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.crescooworkers.Activities.Home;
+import com.example.crescooworkers.Activities.Profiles;
 import com.example.crescooworkers.Constructor.Constructor;
 import com.example.crescooworkers.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,7 +25,6 @@ import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.hbb20.CountryCodePicker;
 import com.mukesh.OnOtpCompletionListener;
 import com.mukesh.OtpView;
 
@@ -110,7 +109,7 @@ public class SignUpOTP extends AppCompatActivity {
                         if (task.isSuccessful()){
                             sendData();
 
-                            Intent intent = new Intent(SignUpOTP.this, Home.class);
+                            Intent intent = new Intent(SignUpOTP.this, Profiles.class);
                            // intent.putExtra("name", name);
                             intent.putExtra("phone", phone);
                             startActivity(intent);
@@ -136,7 +135,7 @@ public class SignUpOTP extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()){
                                     sendData();
-                                    Intent intent = new Intent(SignUpOTP.this, Home.class);
+                                    Intent intent = new Intent(SignUpOTP.this, Profiles.class);
                                     //intent.putExtra("name", name);
                                     intent.putExtra("phone", phone);
                                     startActivity(intent);

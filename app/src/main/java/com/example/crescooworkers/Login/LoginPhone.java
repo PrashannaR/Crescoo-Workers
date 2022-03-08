@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.crescooworkers.Activities.Home;
 import com.example.crescooworkers.R;
 import com.example.crescooworkers.Signup.SignUpOne;
 import com.google.android.material.textfield.TextInputLayout;

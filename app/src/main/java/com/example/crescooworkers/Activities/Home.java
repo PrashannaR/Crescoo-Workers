@@ -6,28 +6,16 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.view.MenuItem;
 
 import com.example.crescooworkers.R;
-import com.example.crescooworkers.Signup.SignUpOne;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class Home extends AppCompatActivity {
 
-    TextView nameTV, occupationTV, phoneTV, perDayTV, perHourTV, yearsTV, ageTV, genderTV;
-    Button btnLogout;
-
-    DatabaseReference databaseReference;
+    FirebaseAuth auth;
     public String phone;
-    String tag = "Home";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,103 +23,32 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        auth = FirebaseAuth.getInstance();
+        if(auth.getCurrentUser()!= null){
+            phone = auth.getCurrentUser().getPhoneNumber();
+        }
 
-        Intent intent = getIntent();
-        phone = intent.getStringExtra("phone");
+        //navBar
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navBar);
 
-        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://crescoo-53eff-default-rtdb.firebaseio.com/");
+        bottomNavigationView.setSelectedItemId(R.id.home);
 
-        btnLogout = findViewById(R.id.btnLogout);
-
-        nameTV = findViewById(R.id.nameTV);
-        occupationTV = findViewById(R.id.occupationTV);
-        phoneTV = findViewById(R.id.phoneTV);
-        perDayTV = findViewById(R.id.perDayTV);
-        perHourTV = findViewById(R.id.perHourTV);
-        yearsTV = findViewById(R.id.yearsTV);
-        ageTV = findViewById(R.id.ageTV);
-        genderTV = findViewById(R.id.genderTV);
-
-        getValuesFromDB();
-        btnLogout.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent1 = new Intent(Home.this, SignUpOne.class);
-                startActivity(intent1);
-                finish();
-            }
-        });
-
-    }
-
-    private void getValuesFromDB() {
-        databaseReference = FirebaseDatabase.getInstance().getReference("workers");
-        databaseReference.child(phone).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()){
-                    if(task.getResult().exists()){
-                        DataSnapshot dataSnapshot = task.getResult();
-                        String name = String.valueOf(dataSnapshot.child("name").getValue());
-                        String occupation = String.valueOf(dataSnapshot.child("occupation").getValue());
-                        String pDay = String.valueOf(dataSnapshot.child("pDay").getValue());
-                        String pHour = String.valueOf(dataSnapshot.child("pHour").getValue());
-                        String phone = String.valueOf(dataSnapshot.child("phone").getValue());
-                        String years = String.valueOf(dataSnapshot.child("yearsOfExp").getValue());
-                        String age = String.valueOf(dataSnapshot.child("age").getValue());
-                        String gender = String.valueOf(dataSnapshot.child("gender").getValue());
-
-                        nameTV.setText(name);
-                        occupationTV.setText(occupation);
-                        phoneTV.setText(phone);
-                        perDayTV.setText(pDay);
-                        perHourTV.setText(pHour);
-                        yearsTV.setText(years);
-                        ageTV.setText(age);
-                        genderTV.setText(gender);
-                    }
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.profile:
+                       // startActivity(new Intent(getApplicationContext(), Profiles.class));
+                        Intent intent = new Intent(getApplicationContext(), Profiles.class);
+                        intent.putExtra("phone", phone);
+                        startActivity(intent);
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.home:
+                        return true;
                 }
+                return false;
             }
         });
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(tag, "onPause");
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(tag, "onStart");
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(tag, "onResume");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d(tag, "onRestart");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(tag, "onStop");
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(tag, "onDestroy");
     }
 }

@@ -13,7 +13,9 @@
     <color name="blueGreen">#B1D9DB</color>
     <color name="green">#E1F0D1</color>
     <color name="purple">#E9F0F6</color>
-    <color name="grey">#C2B9B9</color>
+    <color name="grey">#F3F3F2</color>
     <color name="darkGrey">#979595</color>
+
+    <color name="blue">#1A3251</color>
 
 </resources>

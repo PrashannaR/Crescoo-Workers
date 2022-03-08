@@ -12,9 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.crescooworkers.Activities.Home;
+import com.example.crescooworkers.Activities.Profiles;
 import com.example.crescooworkers.R;
-import com.example.crescooworkers.Signup.SignUpOTP;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -23,11 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.mukesh.OnOtpCompletionListener;
 import com.mukesh.OtpView;
 
@@ -80,7 +76,7 @@ public class LoginOTP extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-                                    Intent intent = new Intent(LoginOTP.this, Home.class);
+                                    Intent intent = new Intent(LoginOTP.this, Profiles.class);
                                     intent.putExtra("phone", uPhone);
                                     startActivity(intent);
                                     finishAffinity();
@@ -167,7 +163,7 @@ public class LoginOTP extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Intent intent = new Intent(LoginOTP.this, Home.class);
+                            Intent intent = new Intent(LoginOTP.this, Profiles.class);
                             intent.putExtra("phone", uPhone);
                             startActivity(intent);
                             finishAffinity();
