@@ -28,7 +28,6 @@ public class SignUpTwo extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseDatabase rootNode;
-    DatabaseReference reference;
 
     public String years, hour, day, selectedItem, name, phone, gender, age;
 
@@ -97,17 +96,6 @@ public class SignUpTwo extends AppCompatActivity {
                intent.putExtra("hour", hour);
                intent.putExtra("day", day);
                startActivity(intent);
-
-//               //database
-//                reference = rootNode.getReference("workers");
-//
-//                Constructor constructor = new Constructor(name, selectedItem, years, phone, hour, day);
-//                reference.child(phone).setValue(constructor);
-//
-//                Intent intent = new Intent(SignUpTwo.this, Home.class);
-//                intent.putExtra("phone", phone);
-//                startActivity(intent);
-//                finish();
 
 
             }

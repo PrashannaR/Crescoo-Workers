@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.crescooworkers.R;
@@ -26,10 +27,11 @@ public class Profiles extends AppCompatActivity {
 
     TextView nameTV, occupationTV, phoneTV, perDayTV, perHourTV, yearsTV, ageTV, genderTV;
     Button btnLogout;
-
+    ImageView edit;
     DatabaseReference databaseReference;
     public String phone;
     String tag = "Home";
+    public String name, occupation, perDay, perHour, years, age, gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class Profiles extends AppCompatActivity {
 
         Intent intent = getIntent();
         phone = intent.getStringExtra("phone");
+
+        edit = findViewById(R.id.edit);
 
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://crescoo-53eff-default-rtdb.firebaseio.com/");
 
@@ -83,6 +87,30 @@ public class Profiles extends AppCompatActivity {
                 Intent intent1 = new Intent(Profiles.this, SignUpOne.class);
                 startActivity(intent1);
                 finish();
+            }
+        });
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                name = nameTV.getText().toString();
+                age = ageTV.getText().toString();
+                gender = genderTV.getText().toString();
+                occupation = occupationTV.getText().toString();
+                perDay = perDayTV.getText().toString();
+                perHour = perHourTV.getText().toString();
+                years = yearsTV.getText().toString();
+
+                Intent intent = new Intent(Profiles.this, EditProfile.class);
+                intent.putExtra("phone", phone);
+                intent.putExtra("name", name);
+                intent.putExtra("age", age);
+                intent.putExtra("gender", gender);
+                intent.putExtra("occupation", occupation);
+                intent.putExtra("perDay", perDay);
+                intent.putExtra("perHour", perHour);
+                intent.putExtra("years", years);
+                startActivity(intent);
             }
         });
 

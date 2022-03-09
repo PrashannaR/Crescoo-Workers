@@ -31,4 +31,7 @@
     <string name="sampleAge">20</string>
     <string name="profile">Profile</string>
     <string name="logout">Logout</string>
+    <string name="edit_icon">edit icon</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="update">Update</string>
 </resources>

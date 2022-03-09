@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CrescooWorkers">
         <activity
+            android:name=".Activities.EditProfile"
+            android:exported="false" />
+        <activity
             android:name=".Activities.Home"
             android:exported="false" />
         <activity
