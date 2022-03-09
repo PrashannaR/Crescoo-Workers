@@ -42,9 +42,11 @@ public class Home extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), Profiles.class);
                         intent.putExtra("phone", phone);
                         startActivity(intent);
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.home:
+                        finish();
                         return true;
                 }
                 return false;

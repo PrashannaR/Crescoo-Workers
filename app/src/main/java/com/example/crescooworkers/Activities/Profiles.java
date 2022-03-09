@@ -70,8 +70,10 @@ public class Profiles extends AppCompatActivity {
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), Home.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.profile:
+                        finish();
                         return true;
                 }
                 return false;
