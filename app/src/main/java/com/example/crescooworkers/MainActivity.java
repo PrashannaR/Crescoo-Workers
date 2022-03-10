@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+import com.example.crescooworkers.Activities.LoginOrSignUp;
 import com.example.crescooworkers.Activities.Profiles;
 import com.example.crescooworkers.Signup.SignUpOne;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(MainActivity.this, SignUpOne.class);
+                    Intent intent = new Intent(MainActivity.this, LoginOrSignUp.class);
                     startActivity(intent);
                     finish();
                     //Toast.makeText(MainActivity.this, "Nil", Toast.LENGTH_SHORT).show();
